@@ -1,6 +1,5 @@
 import os
 import spacy
-from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 import nltk
 
@@ -34,6 +33,9 @@ def preprocess_text(text, stopwords_list, make_tags=False):
 
 # Function to save processed text to a file
 def save_file(file_path, text):
+    # Check if the directory exists, if not create it
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    
     with open(file_path, 'w', encoding='utf-8') as file:
         file.write(text)
 
